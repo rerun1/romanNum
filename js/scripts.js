@@ -6,7 +6,7 @@ var tens = [];
 var hundreds = [];
 
 
-var stringTest = function(string){
+var convertToRomanNumbers = function(string){
   for (var i = 0; i < string.length; i ++ ){
     if (string.match(/[^\d*]/)) {
       result = "Error! Please enter just numbers";
@@ -15,7 +15,10 @@ var stringTest = function(string){
       result = "Error! Please enter a number other than zero";
       return result;
     } else if (string.match(/^[0]/)) {
-      result = "Error! Please enter a number that does not begin with zero";
+      result = "Please enter a number that does not begin with zero";
+      return result;
+    } else if (parseInt(string) >= 4000) {
+      result = "Please choose a number that is equal to or less than 3999";
       return result;
     }
   }
@@ -130,10 +133,9 @@ $(document).ready(function(){
 
     resetForm();
 
-
     userNumber = $("input#numberInput").val();
 
-    stringTest(userNumber);
+    convertToRomanNumbers(userNumber);
 
     $("p#romanNumberOutput").text(result);
 
